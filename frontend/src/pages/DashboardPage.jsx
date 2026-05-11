@@ -52,7 +52,11 @@ export default function DashboardPage() {
 
   async function fetchMindmaps() {
     try {
+      console.log(api);
+
       const { data } = await api.get('/api/mindmaps');
+      console.log(data);
+
       setMindmaps(data);
     } catch (err) {
       console.error(err);
