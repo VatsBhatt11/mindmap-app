@@ -10,18 +10,18 @@ const PORT = process.env.PORT || 3001;
 
 const allowedOrigins = [
   'http://localhost:5173',
-  process.env.FRONTEND_URL,
+  'https://mindmap-app-mu.vercel.app',
+  process.env.FRONTEND_URL
 ].filter(Boolean);
 
 app.use(cors({
   origin: (origin, callback) => {
     // Allow requests with no origin (like mobile apps or curl requests)
     if (!origin) return callback(null, true);
-    
-    const isAllowed = allowedOrigins.includes(origin) || 
-                     origin.endsWith('.vercel.app') || 
-                     process.env.NODE_ENV !== 'production';
-    
+
+    const isAllowed = allowedOrigins.includes(origin) ||
+      process.env.NODE_ENV !== 'production';
+
     if (isAllowed) {
       callback(null, true);
     } else {
